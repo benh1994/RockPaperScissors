@@ -1,3 +1,13 @@
+let playerScore = 0;
+let computerScore = 0;
+let tie = 0;
+let win = "You won!"
+let lose = "You lost!"
+let draw = "You tied!"
+
+
+
+
 function computerPlay() {
     const options = ["rock", "paper", "scissors"];
     let choice = Math.floor(Math.random() * options.length);
@@ -13,40 +23,58 @@ function computerPlay() {
     //Player chooses rock
   
     if (playerSelection == "rock" && computerSelection == "scissors" ) {
-      let win = 1;
-      return "You chose rock, Computer chose scissors, You win!";
+      playerScore++;
+      return win;
     }
     if (playerSelection == "rock" && computerSelection == "paper" ) {
-      let lose = 1;
-      return "You chose rock, Computer chose paper, You lose!";
+      computerScore++;
+      return lose;
     }
     if (playerSelection == "rock" && computerSelection == "rock" ) {
-      let draw = 1
-      return "You chose rock, Computer chose rock, You draw!";
+      tie++;
+      return draw;
     }
   
     // Player chooses paper
   
     if (playerSelection == "paper" && computerSelection == "scissors" ) {
-      return "You chose paper, Computer chose scissors, You lose!";
+      computerScore++;
+      return lose;
     }
     if (playerSelection == "paper" && computerSelection == "paper" ) {
-      return "You chose paper, Computer chose paper, You draw!";
+      tie++;
+      return draw;
     }
     if (playerSelection == "paper" && computerSelection == "rock" ) {
-      return "You chose paper, Computer chose rock, You win!";
+      playerScore++;
+      return win;
     }
   
     // Player chooses scissors
   
     if (playerSelection == "scissors" && computerSelection == "scissors" ) {
-      return "You chose scissors, Computer chose scissors, You draw!";
+      tie++;
+      return draw;
     }
     if (playerSelection == "scissors" && computerSelection == "paper" ) {
-      return "You chose scissors, Computer chose paper, You win!";
-    }
+      playerScore++;
+      return win;    }
     if (playerSelection == "scissors" && computerSelection == "rock" ) {
-      return "You chose scissors, Computer chose rock, You lose!";
+      computerScore++;
+      return lose;
     }
   }
-  
+
+//New function to play rounds of more than 1
+
+function game() {
+  for (let i = 0; i < 5; i++) {
+    console.log(playRound())
+  }
+}
+
+game() 
+
+console.log(playerScore)
+console.log(computerScore)
+console.log(tie)
